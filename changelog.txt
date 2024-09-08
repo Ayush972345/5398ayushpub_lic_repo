@@ -180,6 +180,4 @@ v1.2.1 (Aug/2018)
 v1.2 (Feb/2015)
 - First commit uploaded to Github
 
-
-
-Added a new line
+ded a new line
