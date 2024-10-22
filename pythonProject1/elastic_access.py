@@ -1,18 +1,27 @@
-import time
+from elasticsearch import Elasticsearch
 
-class ElasticAccess:
-    def __init__(self):
-        self.dict = {}
-        self.list1 = {12,43,56}
-        self.list2 = {"ag", "ds", "we"}
+# Step 3: Connect to Elasticsearch
+# Make sure you have the correct Elasticsearch host and port
+es = Elasticsearch([{'host': 'localhost', 'port': 5601}])
 
-    def check_querry_response(self):
-        for i,j in zip(self.list1, self.list2):
-            self.dict[i] = j
+# Step 4: Define the Elasticsearch Query
+# For example, searching for documents where 'field1' matches 'value1'
+query = {
+    "query": {
+        "match": {
+            "field1": "value1"
+        }
+    }
+}
 
-        for i in range(10):
-            print(self.dict)
-            time.sleep(2)
+# Step 5: Execute the Query
+response = es.search(index="your-index-name", body=query)
 
-object_of_ElasticAccess = ElasticAccess()
-object_of_ElasticAccess.check_querry_response()
+# Step 6: Process the Response
+# Displaying the results
+print("Total Hits:", response['hits']['total']['value'])
+for hit in response['hits']['hits']:
+    print(hit["_source"])
+
+# Optionally, you can add pagination or filter further as needed
+
