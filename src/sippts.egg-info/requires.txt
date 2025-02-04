@@ -1,0 +1,8 @@
+netifaces
+requests
+IPy
+scapy
+pyshark
+websocket-client
+rel
+cursor
